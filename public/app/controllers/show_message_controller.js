@@ -12,10 +12,10 @@ FoorumApp.controller('ShowMessageController', function ($scope, $routeParams, Ap
             // from server - someone else might have also replied in the
             // meanwhile.
             $scope.message.Replies.push(reply);
+        
+            $scope.newReply.content = "";
             update();
         });
-        
-        $scope.newReply.content = "";
     };
     
     update();
