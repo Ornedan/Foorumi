@@ -32,7 +32,7 @@
     
     <div class="form-group">
         <label>Vastaus</label>
-        <textarea class="form-control" ng-model="newReply.content"></textarea>
+        <textarea class="form-control" ng-model="$parent.newReply.content"></textarea>
     </div>
     <button class="btn btn-success" ng-click="addReply()">Lisää vastaus</button>
 </form>

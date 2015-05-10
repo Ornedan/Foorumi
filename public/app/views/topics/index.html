@@ -18,12 +18,12 @@
 
     <div class="form-group">
         <label>Nimi</label>
-        <input type="text" class="form-control" ng-model="newTopic.name">
+        <input type="text" class="form-control" ng-model="$parent.newTopic.name">
     </div>
 
     <div class="form-group">
         <label>Kuvaus</label>
-        <textarea class="form-control" ng-model="newTopic.description"></textarea>
+        <textarea class="form-control" ng-model="$parent.newTopic.description"></textarea>
     </div>
     <button class="btn btn-success" ng-click="addTopic()">Lisää viesti</button>
 </form>

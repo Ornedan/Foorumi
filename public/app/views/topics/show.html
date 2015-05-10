@@ -35,12 +35,12 @@
     
     <div class="form-group">
         <label>Otsikko</label>
-        <input type="text" class="form-control" ng-model="newMessage.title">
+        <input type="text" class="form-control" ng-model="$parent.newMessage.title">
     </div>
 
     <div class="form-group">
         <label>Viesti</label>
-        <textarea class="form-control" ng-model="newMessage.content"></textarea>
+        <textarea class="form-control" ng-model="$parent.newMessage.content"></textarea>
     </div>
     <button class="btn btn-success" ng-click="addMessage()">Lisää viesti</button>
 </form>
