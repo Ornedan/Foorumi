@@ -1,17 +1,20 @@
 <div class="page-header">
-  <h1>Kirjaudu sisään</h1>
+    <h1>Kirjaudu sisään</h1>
 </div>
 
-<form>
-  <div class="form-group">
-    <label>Käyttäjätunnus</label>
-    <input type="text" class="form-control">
-  </div>
+<form ng-class="{ 'has-error': loginFailed }">
+    <div class="form-group" ng-if="loginFailed">
+        Kirjautuminen epäonnistui!
+    </div>
+    <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" class="form-control" ng-model="user.username">
+    </div>
 
-  <div class="form-group">
-    <label>Salasana</label>
-    <input type="text" class="form-control">
-  </div>
+    <div class="form-group">
+        <label>Salasana</label>
+        <input type="text" class="form-control" ng-model="user.password">
+    </div>
 
-  <button class="btn btn-primary">Kirjaudu sisään</button>
+    <button class="btn btn-primary" ng-click="login()">Kirjaudu sisään</button>
 </form>

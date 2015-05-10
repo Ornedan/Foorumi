@@ -12,7 +12,7 @@ router.get('/:id', function(req, res, next) {
   var messageId = req.params.id;
   Models.Message.findOne({ 
       where: { id: messageId },
-      include: { 
+      include: {
           model: Models.Reply,
           include: { model: Models.User }
       }
