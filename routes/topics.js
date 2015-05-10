@@ -17,7 +17,10 @@ router.get('/', function(req, res, next) {
 router.get('/:id', function(req, res, next) {
   // Hae aihealue tällä id:llä tässä (Vinkki: findOne)
   var topicId = req.params.id;
-  Models.Topic.findOne({ where: { id: topicId }}).then(function(topic) {
+  Models.Topic.findOne({ 
+      where: { id: topicId },
+      include: { model: Models.Message }
+  }).then(function(topic) {
      res.json(topic); 
   });
 });
@@ -27,10 +30,7 @@ router.post('/', function(req, res, next) {
   // Lisää tämä aihealue
   var topicToAdd = req.body;
   // Palauta vastauksena lisätty aihealue
-  Models.Topic.create({
-      name: topicToAdd.name,
-      description: topicToAdd.description
-  }).then(function(topic) {
+  Models.Topic.create(topicToAdd).then(function(topic) {
       res.json(topic);
   });
 });
@@ -41,8 +41,11 @@ router.post('/:id/message', function(req, res, next) {
   var topicId = req.params.id;
   // ...tämä viesti (Vinkki: lisää ensin messageToAdd-objektiin kenttä TopicId, jonka arvo on topicId-muuttujan arvo ja käytä sen jälkeen create-funktiota)
   var messageToAdd = req.body;
+  messageToAdd.TopicId = topicId;
   // Palauta vastauksena lisätty viesti
-  res.send(200);
+  Models.Message.create(messageToAdd).then(function(message) {
+      res.json(message);
+  });
 });
 
 module.exports = router;
